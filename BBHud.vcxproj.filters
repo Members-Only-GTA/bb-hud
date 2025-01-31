@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="source\BBHud.cpp" />
+    <ClCompile Include="source\HudColoursNew.cpp" />
+    <ClCompile Include="source\Utility.cpp" />
+    <ClCompile Include="source\HudNew.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\data\hudcolor.dat" />
+    <None Include="resources\data\hud.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\BBHud.h" />
+    <ClInclude Include="source\HudColoursNew.h" />
+    <ClInclude Include="source\Utility.h" />
+    <ClInclude Include="source\HudNew.h" />
+    <ClInclude Include="source\LateStaticInit.h" />
+  </ItemGroup>
+</Project>
