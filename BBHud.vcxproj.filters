@@ -2,19 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="source\BBHud.cpp" />
-    <ClCompile Include="source\HudColoursNew.cpp" />
-    <ClCompile Include="source\Utility.cpp" />
-    <ClCompile Include="source\HudNew.cpp" />
+    <ClCompile Include="source\render\CHudColoursNew.cpp" />
+    <ClCompile Include="source\render\CHudNew.cpp" />
+    <ClCompile Include="source\settings\Settings.cpp" />
+    <ClCompile Include="source\render\CProgressBar.cpp" />
+    <ClCompile Include="include\extensions\ScreenAddons.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\data\hudcolor.dat" />
+    <None Include="resources\data\hudColor.dat" />
     <None Include="resources\data\hud.dat" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BBHud.h" />
-    <ClInclude Include="source\HudColoursNew.h" />
-    <ClInclude Include="source\Utility.h" />
-    <ClInclude Include="source\HudNew.h" />
-    <ClInclude Include="source\LateStaticInit.h" />
+    <ClInclude Include="source\render\CHudColoursNew.h" />
+    <ClInclude Include="source\render\CHudNew.h" />
+    <ClInclude Include="source\settings\Settings.h" />
+    <ClInclude Include="source\render\CProgressBar.h" />
+    <ClInclude Include="include\extensions\ScreenAddons.h" />
   </ItemGroup>
 </Project>

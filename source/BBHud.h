@@ -1,25 +1,15 @@
 #pragma once
-
-#include "plugin.h"
-#include "LateStaticInit.h"
-
-#ifdef GTASA
-#define PLAYER_ID 0
-#else
-#define PLAYER_ID
-#endif
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 class BBHud {
 public:
-	static bool bInitialized;
-	static HANDLE pThread;
-	static bool bRwInitialized;
-	static bool bRwQuit;
+	static char* ms_nGamePrefix;
+	static bool ms_bReload;
 
 public:
-	static bool Init();
-	static void Shutdown();
-	static void Run();
-};
+	BBHud();
 
-extern int& gGameState;
+	static void InitGameMode(std::string gameMode, bool reInit = false);
+	static void ReInitialise();
+};

@@ -1,70 +1,62 @@
+#include "plugin.h"
 #include "BBHud.h"
-#include "HudColoursNew.h"
-#include "HudNew.h"
-
+#include "CHudColoursNew.h"
+#include "CHudNew.h"
+#include "CProgressBar.h"
+#include "Settings.h"
 
 using namespace plugin;
 
-int& gGameState = *(int*)0xC8D4C0;
+BBHud bbhud;
+bool BBHud::ms_bReload;
+bool UpAndRunning;
 
-bool BBHud::bInitialized = false;
-HANDLE BBHud::pThread = NULL;
-bool BBHud::bRwInitialized = false;
-bool BBHud::bRwQuit = false;
+BBHud::BBHud() {
+    if (!UpAndRunning)
+    {
+        BBHud::ms_bReload = true;
+        
+		Events::initRwEvent += []() {
+            HudColourNew.Initialise();
+			CHudNew::Initialise();
+		};
 
-bool BBHud::Init() {
-	if (bInitialized)
-		return false;
+        Events::gameProcessEvent += [] {
+            ;;
+            };
 
-    auto init = []() {
-        HudColourNew.ReadColorsFromFile();
+		Events::drawHudEvent += [] {
+            CHudNew::Draw();
+		};
 
-        bRwInitialized = true;
-    };
+        Events::drawAfterFadeEvent += [] {
+            //CHudNew::DrawAfterFade();
+        };
 
-    Events::initRwEvent += init;
+        Events::shutdownRwEvent += [] {
+            HudColourNew.Shutdown();
+            CHudNew::Shutdown();
+            };
 
-	auto initAfterRw = []() {
-		CHudNew::Init();
-	};
-
-    auto reInitForRestart = []() {
-        CHudNew::ReInit();
-     };
-
-    Events::reInitGameEvent += reInitForRestart;
-
-	auto shutdown = []() {
-        CHudNew::Shutdown();
-
-        bRwQuit = true;
-	};
-
-	Events::shutdownRwEvent += shutdown;
-	bInitialized = true;
-	return true;
-}
-
-void BBHud::Shutdown() {
-    if (bInitialized)
-        return;
-
-	bInitialized = false;
-}
-
-void BBHud::Run() {
-	while (!bRwQuit) {
-		if (bRwInitialized) {
-			//HudColor.Process();
-		}
-		Sleep(100);
-	}
-}
-
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
-    if (reason == DLL_PROCESS_ATTACH) {
-        if (BBHud::Init())
-            BBHud::pThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)(void(__cdecl*)())BBHud::Run, 0, 0, 0);
+        UpAndRunning = true;
     }
-    return TRUE;
+}
+
+void BBHud::InitGameMode(std::string gameMode, bool reInit) {
+    if (reInit) {
+		ReInitialise();
+    }
+}
+
+void BBHud::ReInitialise() {
+	if (!BBHud::ms_bReload) {
+
+		HudColourNew.Shutdown();
+		HudColourNew.Initialise();
+
+		CHudNew::Shutdown();
+		CHudNew::Initialise();
+
+		BBHud::ms_bReload = true;
+	}
 }
