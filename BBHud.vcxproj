@@ -59,7 +59,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_USE_MATH_DEFINES;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;NDEBUG;GTASA;PLUGIN_SGV_10US;RW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\simao\Documents\Projects\plugin-sdk\tools\myplugin-gen\generated\BBHud\project_files\source\render;C:\Users\simao\Documents\Projects\plugin-sdk\tools\myplugin-gen\generated\BBHud\project_files\include\extensions;C:\Users\simao\Documents\Projects\plugin-sdk\tools\myplugin-gen\generated\BBHud\project_files\source\settings;C:\Users\simao\Documents\Projects\plugin-sdk\tools\myplugin-gen\generated\BBHud\project_files\source;..\source;$(PLUGIN_SDK_DIR)\shared;$(PLUGIN_SDK_DIR)\shared\game;$(PLUGIN_SDK_DIR)\plugin_SA;$(PLUGIN_SDK_DIR)\plugin_SA\game_SA;$(PLUGIN_SDK_DIR)\plugin_SA\game_SA\rw;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\include\extensions;$(PLUGIN_SDK_DIR)\shared;$(PLUGIN_SDK_DIR)\shared\game;$(PLUGIN_SDK_DIR)\plugin_SA;$(PLUGIN_SDK_DIR)\plugin_SA\game_SA;$(PLUGIN_SDK_DIR)\plugin_SA\game_SA\rw;..\source\settings;..\source\render;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -67,7 +67,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -105,24 +105,20 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\extensions\ScreenAddons.cpp" />
-    <ClCompile Include="source\render\CProgressBar.cpp" />
-    <ClCompile Include="source\settings\Settings.cpp" />
-    <ClCompile Include="source\render\CHudNew.cpp" />
-    <ClCompile Include="source\render\CHudColoursNew.cpp" />
-    <ClCompile Include="source\BBHud.cpp" />
+    <ClCompile Include="ScreenAddons.cpp" />
+    <ClCompile Include="CProgressBar.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="CHudNew.cpp" />
+    <ClCompile Include="CHudColoursNew.cpp" />
+    <ClCompile Include="BBHud.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\data\hud.dat" />
-    <None Include="resources\data\hudColor.dat" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\extensions\ScreenAddons.h" />
-    <ClInclude Include="source\render\CProgressBar.h" />
-    <ClInclude Include="source\settings\Settings.h" />
-    <ClInclude Include="source\render\CHudNew.h" />
-    <ClInclude Include="source\render\CHudColoursNew.h" />
-    <ClInclude Include="source\BBHud.h" />
+    <ClInclude Include="ScreenAddons.h" />
+    <ClInclude Include="CProgressBar.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="CHudNew.h" />
+    <ClInclude Include="CHudColoursNew.h" />
+    <ClInclude Include="BBHud.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
