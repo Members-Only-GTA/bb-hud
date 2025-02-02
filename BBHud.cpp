@@ -30,7 +30,7 @@ BBHud::BBHud() {
 		};
 
         Events::drawAfterFadeEvent += [] {
-            //CHudNew::DrawAfterFade();
+            CHudNew::DrawAfterFade();
         };
 
         Events::shutdownRwEvent += [] {
@@ -42,7 +42,7 @@ BBHud::BBHud() {
     }
 }
 
-void BBHud::InitGameMode(std::string gameMode, bool reInit) {
+void BBHud::InitGameMode(bool reInit) {
     if (reInit) {
 		ReInitialise();
     }

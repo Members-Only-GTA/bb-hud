@@ -56,5 +56,16 @@
     <Filter Include="source\settings">
       <UniqueIdentifier>{1aa7e9f8-75fc-4052-ae22-39a5cea03c35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{a2f6aae3-55e8-4e4d-844a-4d67964ee25e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\data">
+      <UniqueIdentifier>{abe5439f-0bf4-4778-bf73-eeecd139c66b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hudColor.dat">
+      <Filter>resources\data</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -15,7 +15,7 @@ void CHudColoursNew::Initialise() {
 	// Color data
 	config_file hudColor(PLUGIN_PATH(s.BuildFilePath("bbhud\\data\\", "hudColor.dat")));
 
-	CRGBA rgba = CRGBA(0, 0, 0, 255);
+	CRGBA rgba = CRGBA(160, 32, 240, 255);
 	READ_RGBA(hudColor, HUD_COLOUR_RED, "HUD_COLOUR_RED", rgba);
 	READ_RGBA(hudColor, HUD_COLOUR_GREEN, "HUD_COLOUR_GREEN", rgba);
 	READ_RGBA(hudColor, HUD_COLOUR_BLUEDARK, "HUD_COLOUR_BLUEDARK", rgba);

@@ -10,6 +10,6 @@ public:
 public:
 	BBHud();
 
-	static void InitGameMode(std::string gameMode, bool reInit = false);
+	static void InitGameMode(bool reInit = false);
 	static void ReInitialise();
 };

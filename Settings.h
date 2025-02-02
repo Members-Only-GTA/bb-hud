@@ -54,7 +54,6 @@ public:
 		return FileName;
 	}
 
-
 	static char* SetSharedFile(const char* folder, const char* file) {
 		static char FileName[128];
 		strcpy_s(FileName, folder);

@@ -138,6 +138,9 @@ void CHudNew::Draw() {
 }
 
 void CHudNew::DrawAfterFade() {
+    RwRenderStateSet(rwRENDERSTATETEXTUREFILTER, (void*)rwFILTERLINEAR);
+    RwRenderStateSet(rwRENDERSTATETEXTUREADDRESS, (void*)rwTEXTUREADDRESSMIRROR);
+    RwD3D9SetRenderState(rwRENDERSTATEVERTEXALPHAENABLE, TRUE);
 	if (!CTimer::m_UserPause && CReplay::Mode != 1 && !CWeapon::ms_bTakePhoto) {
 		if ((!FindPlayerVehicle(-1, 0)
 			|| FindPlayerVehicle(-1, 0)->m_nVehicleSubClass != 4
@@ -158,9 +161,6 @@ void CHudNew::DrawAfterFade() {
 	}
 }
 
-using namespace plugin;
-
-// DrawClock – always uses SA settings and its clock color.
 void CHudNew::DrawClock(float x, float y, float w, float h) {
     char text[16];
     sprintf_s(text, "%02d:%02d", CClock::ms_nGameClockHours, CClock::ms_nGameClockMinutes);
@@ -178,7 +178,6 @@ void CHudNew::DrawClock(float x, float y, float w, float h) {
     CFont::PrintString(SCREEN_RIGHT(x), SCREEN_TOP(y), text);
 }
 
-// DrawMoneyCounter – uses SA settings and its cash color.
 void CHudNew::DrawMoneyCounter(float x, float y, float w, float h) {
     char text[16];
     sprintf_s(text, "$%08d", CWorld::Players[CWorld::PlayerInFocus].m_nDisplayMoney);
@@ -195,7 +194,6 @@ void CHudNew::DrawMoneyCounter(float x, float y, float w, float h) {
     CFont::PrintString(SCREEN_RIGHT(x), SCREEN_TOP(y), text);
 }
 
-// DrawHealth – draws a health progress bar using the health colors.
 void CHudNew::DrawHealth(int PlayerID, float x, float y, float w, float h) {
     float fProgress = CWorld::Players[PlayerID].m_pPed->m_fHealth /
         (float)CWorld::Players[PlayerID].m_nMaxHealth;
@@ -219,7 +217,6 @@ void CHudNew::DrawHealth(int PlayerID, float x, float y, float w, float h) {
     );
 }
 
-// DrawArmour – draws an armour progress bar using the armour colors.
 void CHudNew::DrawArmour(int PlayerID, float x, float y, float w, float h) {
     float fProgress = CWorld::Players[PlayerID].m_pPed->m_fArmour /
         (float)CWorld::Players[PlayerID].m_nMaxArmour;
@@ -238,7 +235,6 @@ void CHudNew::DrawArmour(int PlayerID, float x, float y, float w, float h) {
     );
 }
 
-// DrawBreath – draws a breath progress bar using the breath colors.
 void CHudNew::DrawBreath(int PlayerID, float x, float y, float w, float h) {
     float fProgress = CWorld::Players[PlayerID].m_pPed->m_pPlayerData->m_fBreath /
         CStats::GetFatAndMuscleModifier(STAT_MOD_AIR_IN_LUNG);
@@ -257,9 +253,7 @@ void CHudNew::DrawBreath(int PlayerID, float x, float y, float w, float h) {
     );
 }
 
-// DrawRadioStation – draws the current radio station text using SA settings.
 void CHudNew::DrawRadioStation(float x, float y, float w, float h) {
-    // Assume we have a valid radio station name.
     CFont::SetProportional(false);
     CFont::SetBackground(false, false);
     CFont::SetOrientation(ALIGN_CENTER);
@@ -271,7 +265,6 @@ void CHudNew::DrawRadioStation(float x, float y, float w, float h) {
     CFont::SetScale(SCREEN_LEFT(w), SCREEN_TOP(h));
 }
 
-// DrawSubtitles – draws subtitles with SA subtitle font and its colors.
 void CHudNew::DrawSubtitles(float x, float y, float w, float h) {
     CFont::SetProportional(true);
     CFont::SetOrientation(ALIGN_CENTER);
@@ -284,7 +277,6 @@ void CHudNew::DrawSubtitles(float x, float y, float w, float h) {
     CFont::PrintString(SCREEN_MIDDLE_X(x), SCREEN_BOTTOM(y), CHud::m_Message);
 }
 
-// DrawWanted – draws wanted level icons using SA defaults.
 void CHudNew::DrawWanted(float x, float y, float w, float h) {
     char icon[16];
     strcpy_s(icon, "]");

@@ -74,7 +74,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>plugin.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>plugin_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(PLUGIN_SDK_DIR)\output\lib;$(DXSDK_DIR)\Lib\x86;$(PLUGIN_SDK_DIR)\shared\bass;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\output\asi\BBHudSA.lib</ImportLibrary>
     </Link>
@@ -119,6 +119,9 @@
     <ClInclude Include="CHudNew.h" />
     <ClInclude Include="CHudColoursNew.h" />
     <ClInclude Include="BBHud.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hudColor.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
