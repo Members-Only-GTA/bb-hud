@@ -39,6 +39,9 @@
     <ClInclude Include="Settings.h">
       <Filter>source\settings</Filter>
     </ClInclude>
+    <ClInclude Include="CHudColoursDefault.h">
+      <Filter>source\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
